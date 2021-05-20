@@ -1,3 +1,8 @@
+## [2.2.8](https://github.com/aws/aws-iot-device-sdk-js/releases/tag/v2.2.8) (May 20, 2021)
+
+Bugfixes/Improvements
+  - Updated mqtt dependency to latest version
+
 ## [2.2.7](https://github.com/aws/aws-iot-device-sdk-js/releases/tag/v2.2.7) (Sep 15, 2020)
 
 Bugfixes/Improvements
