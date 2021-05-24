@@ -94,6 +94,8 @@ ignore anything passed in programmatically.
 
 ### Device Class
 ```js
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// SPDX-License-Identifier: MIT-0
 var awsIot = require('aws-iot-device-sdk');
 
 //
@@ -127,8 +129,11 @@ device
     console.log('message', topic, payload.toString());
   });
 ```
+
 ### Thing Shadow Class
 ```js
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// SPDX-License-Identifier: MIT-0
 var awsIot = require('aws-iot-device-sdk');
 
 //
@@ -222,6 +227,8 @@ thingShadows.on('timeout',
 ```
 ### Jobs Class
 ```js
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// SPDX-License-Identifier: MIT-0
 var awsIot = require('aws-iot-device-sdk');
 
 //
