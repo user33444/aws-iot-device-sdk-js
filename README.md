@@ -845,7 +845,7 @@ directory specified.  Default certificate/key file names are as follows:
 
 * certificate.pem.crt: your AWS IoT certificate
 * private.pem.key: the private key associated with your AWS IoT certificate
-* root-CA.crt: the root CA certificate [(available from Symantec here)](https://www.symantec.com/content/en/us/enterprise/verisign/roots/VeriSign-Class%203-Public-Primary-Certification-Authority-G5.pem)
+* root-CA.crt: the root CA certificate [(available from the AWS documentation here)](https://docs.aws.amazon.com/iot/latest/developerguide/server-authentication.html#server-authentication-certs)
 
 #### Specify certificate names and locations individually
 
