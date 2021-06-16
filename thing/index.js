@@ -33,13 +33,6 @@ function buildThingShadowTopic(thingName, operation, type) {
    return '$aws/things/' + thingName + '/shadow/' + operation;
 }
 
-function isReservedTopic(topic) {
-   if (topic.substring(0, 12) === '$aws/things/') {
-      return true;
-   }
-   return false;
-}
-
 function isThingShadowTopic(topicTokens, direction) {
    var rc = false;
    if (topicTokens[0] === '$aws') {
@@ -711,11 +704,7 @@ function ThingShadowsClient(deviceOptions, thingShadowOptions) {
    // Publish on non-thing topics.
    //
    this.publish = function(topic, message, options, callback) {
-      if (!isReservedTopic(topic)) {
-         device.publish(topic, message, options, callback);
-      } else {
-         throw ('cannot publish to reserved topic \'' + topic + '\'');
-      }
+      device.publish(topic, message, options, callback);
    };
 
    //
