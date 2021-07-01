@@ -1,3 +1,8 @@
+## [2.2.9](https://github.com/aws/aws-iot-device-sdk-js/releases/tag/v2.2.9) (July 1, 2021)
+
+Bugfixes/Improvements
+  - Remove blocking of subscribing/publishing to reserved topics
+
 ## [2.2.8](https://github.com/aws/aws-iot-device-sdk-js/releases/tag/v2.2.8) (May 20, 2021)
 
 Bugfixes/Improvements
