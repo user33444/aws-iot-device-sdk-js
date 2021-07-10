@@ -34,15 +34,13 @@
     "websocket-stream": "^5.5.2"
   },
   "devDependencies": {
-    "gulp": "^3.9.0",
-    "gulp-beautify": "^2.0.0",
-    "gulp-coverage": "^0.3.38",
+    "gulp": "^4.0.2",
     "gulp-eslint": "^6.0.0",
     "gulp-jshint": "^2.1.0",
-    "gulp-mocha": "^3.0.1",
+    "gulp-mocha": "^8.0.0",
     "jshint": "^2.13.0",
     "jshint-stylish": "^2.2.1",
-    "rewire": "^2.5.1",
+    "rewire": "^5.0.0",
     "sinon": "^1.17.3"
   },
   "scripts": {
