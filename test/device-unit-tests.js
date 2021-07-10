@@ -48,7 +48,7 @@ describe( 'device class unit tests', function() {
             return mockMQTTClientObject;
         };
 
-        mqttSave = sinon.stub(mqtt, 'MqttClient', fakeConnect);
+        mqttSave = sinon.stub(mqtt, 'MqttClient').callsFake(fakeConnect);
 
         mockTlsRevert = myTls.__set__('tls', mockTlsObject);
         mockMqttRevert = myTls.__set__('mqtt', mockMqttObject);
@@ -1852,7 +1852,7 @@ describe( 'device class unit tests', function() {
 // Fix the date at a known value so that the URL preparation code will always produce
 // the same result.
 //
-      before( function() { clock = sinon.useFakeTimers( (new Date('11/15/86 PST')).getTime(), 'Date' ); } );
+      before( function() { clock = sinon.useFakeTimers( (new Date('11/15/86 PST'))); } );
       after( function() { clock.restore(); } );
 
       it('calculates the url correctly', function() {
@@ -1872,7 +1872,7 @@ describe( 'device class unit tests', function() {
 // Fix the date at a known value so that the URL preparation code will always produce
 // the same result.
 //
-      before( function() { clock = sinon.useFakeTimers( (new Date('11/15/86 PST')).getTime(), 'Date' ); } );
+      before( function() { clock = sinon.useFakeTimers( (new Date('11/15/86 PST'))); } );
       after( function() { clock.restore(); } );
 
       it('calculates the url correctly', function() {
@@ -1894,7 +1894,7 @@ describe( 'device class unit tests', function() {
 // Fix the date at a known value so that the URL preparation code will always produce
 // the same result.
 //
-      before( function() { clock = sinon.useFakeTimers( (new Date('11/15/86 PST')).getTime(), 'Date' ); } );
+      before( function() { clock = sinon.useFakeTimers( (new Date('11/15/86 PST'))); } );
       after( function() { clock.restore(); } );
 
       it('calculates the url correctly', function() {

@@ -47,7 +47,7 @@ describe( 'jobs class unit tests', function() {
             return mockMQTTClientObject;
         };
 
-        mqttSave = sinon.stub(mqtt, 'MqttClient', fakeConnect);
+        mqttSave = sinon.stub(mqtt, 'MqttClient').callsFake(fakeConnect);
 
         mockTlsRevert = myTls.__set__('tls', mockTlsObject);
         mockMqttRevert = myTls.__set__('mqtt', mockMqttObject);

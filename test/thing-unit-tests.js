@@ -38,7 +38,7 @@ describe( 'thing shadow class unit tests', function() {
             return mockMQTTClientObject;
         };
 
-        mqttSave = sinon.stub(device, 'DeviceClient', fakeConnect);
+        mqttSave = sinon.stub(device, 'DeviceClient').callsFake(fakeConnect);
     });
     afterEach( function () {
         mqttSave.restore();
@@ -85,7 +85,7 @@ describe( 'thing shadow class unit tests', function() {
 
       it('should trigger error when a subscription fails', function () {
 
-        var stubTriggerError = sinon.stub(mockMQTTClient, 'triggerError', function() {return true;});
+        var stubTriggerError = sinon.stub(mockMQTTClient, 'triggerError').callsFake(function() {return true;});
 
         var thingShadows = thingShadow(thingShadowsConfig);
         thingShadows.register('testShadow1', { ignoreDeltas: true, persistentSubscribe: true }, function (err, granted) {
@@ -904,7 +904,7 @@ describe( 'thing shadow class unit tests', function() {
           myPayload = '{"state":{"desired":{"color":"RED"},"reported":{"color":"BLUE"}},"clientToken":"CoolToken1"}';
           myStateObject = JSON.parse(myPayload);
           // cause subscribe error on update (we subscribe because we have elected to not be persistently subscribed)
-          var stubTriggerError = sinon.stub(mockMQTTClient, 'triggerError', function() {return true;});
+          var stubTriggerError = sinon.stub(mockMQTTClient, 'triggerError').callsFake(function() {return true;});
           // Update
           thingShadows.update('testShadow4', myStateObject);
           // Publish will not be called (error before updating state)
