@@ -705,7 +705,7 @@ describe( 'thing shadow class unit tests', function() {
           // Get
           thingShadows.get('testShadow3', 'CoolToken1');
           mockMQTTClientObject.emit('message', '$aws/things/testShadow3/shadow/get/accepted', '{"clientToken":"CoolToken1", "version":3}');
-          fakeCallback.reset(); // Reset spy
+          fakeCallback.resetHistory(); // Reset spy
           thingShadows.get('testShadow3', 'CoolToken2');
           mockMQTTClientObject.emit('message', '$aws/things/testShadow3/shadow/get/accepted', '{"clientToken":"CoolToken2", "version":1}'); // old version
           // Delete
@@ -809,7 +809,7 @@ describe( 'thing shadow class unit tests', function() {
           // Check
           assert(fakeCallback.calledOnce);
           // Reset
-          fakeCallback.reset();
+          fakeCallback.resetHistory();
           // Update rejected
           thingShadows.update('testShadow4', myStateObject);
           mockMQTTClientObject.emit('message', '$aws/things/testShadow4/shadow/update/rejected', '{"clientToken":"CoolToken1","version":2}');
@@ -1070,8 +1070,8 @@ describe( 'thing shadow class unit tests', function() {
           clock.tick(3000);
           assert(fakeCallbackStatus.calledOnce);
           sinon.assert.notCalled(fakeCallbackTimeout);
-          fakeCallbackStatus.reset(); // Reset spy status
-          fakeCallbackTimeout.reset(); // Reset spy timeout
+          fakeCallbackStatus.resetHistory(); // Reset spy status
+          fakeCallbackTimeout.resetHistory(); // Reset spy timeout
           thingShadows.update('testShadow4', myStateObject);
           mockMQTTClientObject.emit('message', '$aws/things/testShadow4/shadow/update/accepted', '{"clientToken":"CoolToken1", "version":1}'); // old version
           clock.tick(3000);

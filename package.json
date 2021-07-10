@@ -41,7 +41,7 @@
     "jshint": "^2.13.0",
     "jshint-stylish": "^2.2.1",
     "rewire": "^5.0.0",
-    "sinon": "^3.3.0"
+    "sinon": "^7.5.0"
   },
   "scripts": {
     "test": "node ./node_modules/gulp/bin/gulp.js test --verbose",

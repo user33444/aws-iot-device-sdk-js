@@ -125,9 +125,9 @@ describe( 'jobs agent unit tests', function() {
         var fakeCallbackSucceeded = sinon.spy();
 
         it('invalid status calls failed callback', function() {
-            fakeCallbackInProgress.reset();
-            fakeCallbackFailed.reset();
-            fakeCallbackSucceeded.reset();
+            fakeCallbackInProgress.resetHistory();
+            fakeCallbackFailed.resetHistory();
+            fakeCallbackSucceeded.resetHistory();
             var job = buildJobObject('install', { status: 'INVALID' }, null, fakeCallbackInProgress, function (statusDetails) {
                 fakeCallbackFailed();
                 console.log(statusDetails);
@@ -140,9 +140,9 @@ describe( 'jobs agent unit tests', function() {
         });
 
         it('missing packageName calls failed callback', function() {
-            fakeCallbackInProgress.reset();
-            fakeCallbackFailed.reset();
-            fakeCallbackSucceeded.reset();
+            fakeCallbackInProgress.resetHistory();
+            fakeCallbackFailed.resetHistory();
+            fakeCallbackSucceeded.resetHistory();
             var job = buildJobObject('install', { status: 'QUEUED' }, { files: [ { fileName: 'testFileName' } ] }, fakeCallbackInProgress, function (statusDetails) {
                 fakeCallbackFailed();
                 console.log(statusDetails);
@@ -155,9 +155,9 @@ describe( 'jobs agent unit tests', function() {
         });
 
         it('missing files list calls failed callback', function() {
-            fakeCallbackInProgress.reset();
-            fakeCallbackFailed.reset();
-            fakeCallbackSucceeded.reset();
+            fakeCallbackInProgress.resetHistory();
+            fakeCallbackFailed.resetHistory();
+            fakeCallbackSucceeded.resetHistory();
             var job = buildJobObject('install', { status: 'QUEUED' }, { packageName: 'testPackageName' }, fakeCallbackInProgress, function (statusDetails) {
                 fakeCallbackFailed();
                 console.log(statusDetails);
@@ -170,9 +170,9 @@ describe( 'jobs agent unit tests', function() {
         });
 
         it('empty files list calls failed callback', function() {
-            fakeCallbackInProgress.reset();
-            fakeCallbackFailed.reset();
-            fakeCallbackSucceeded.reset();
+            fakeCallbackInProgress.resetHistory();
+            fakeCallbackFailed.resetHistory();
+            fakeCallbackSucceeded.resetHistory();
             var job = buildJobObject('install', { status: 'QUEUED' }, { packageName: 'testPackageName', files: [] }, fakeCallbackInProgress, function (statusDetails) {
                 fakeCallbackFailed();
                 console.log(statusDetails);
@@ -185,9 +185,9 @@ describe( 'jobs agent unit tests', function() {
         });
 
         it('invalid file in files list calls failed callback', function() {
-            fakeCallbackInProgress.reset();
-            fakeCallbackFailed.reset();
-            fakeCallbackSucceeded.reset();
+            fakeCallbackInProgress.resetHistory();
+            fakeCallbackFailed.resetHistory();
+            fakeCallbackSucceeded.resetHistory();
             var job = buildJobObject('install', { status: 'QUEUED' }, {
                     packageName: 'testPackageName',
                     files: [ null, { fileName: 'testFileName.txt' } ] },
@@ -209,9 +209,9 @@ describe( 'jobs agent unit tests', function() {
         it('missing url in file in files calls failed callback, rolls back', function(done) {
             fs.reset();
             fs.writeFileSync('/testFileName.txt', 'This is a test.');
-            fakeCallbackInProgress.reset();
-            fakeCallbackFailed.reset();
-            fakeCallbackSucceeded.reset();
+            fakeCallbackInProgress.resetHistory();
+            fakeCallbackFailed.resetHistory();
+            fakeCallbackSucceeded.resetHistory();
             var job = buildJobObject('install', { status: 'QUEUED' }, {
                     packageName: 'testPackageName', workingDirectory: tempDir,
                     files: [ { fileName: 'testFileName.txt' } ] },
@@ -235,9 +235,9 @@ describe( 'jobs agent unit tests', function() {
         it('invalid url in file in files calls failed callback, rolls back', function(done) {
             fs.reset();
             fs.writeFileSync('/testFileName.txt', 'This is a test.');
-            fakeCallbackInProgress.reset();
-            fakeCallbackFailed.reset();
-            fakeCallbackSucceeded.reset();
+            fakeCallbackInProgress.resetHistory();
+            fakeCallbackFailed.resetHistory();
+            fakeCallbackSucceeded.resetHistory();
             var job = buildJobObject('install', { status: 'QUEUED' }, {
                     packageName: 'testPackageName', workingDirectory: tempDir,
                     files: [ { fileName: 'testFileName.txt', fileSource: { url: 'https://bogus.not.a.url' } } ] },
@@ -262,9 +262,9 @@ describe( 'jobs agent unit tests', function() {
             fs.reset();
             fs.writeFileSync('/testFileName.txt', 'This is a test.');
             fs.writeFileSync('/testNewFile.txt', 'This is an updated test.');
-            fakeCallbackInProgress.reset();
-            fakeCallbackFailed.reset();
-            fakeCallbackSucceeded.reset();
+            fakeCallbackInProgress.resetHistory();
+            fakeCallbackFailed.resetHistory();
+            fakeCallbackSucceeded.resetHistory();
             var job = buildJobObject('install', { status: 'QUEUED' }, {
                     packageName: 'testPackageName', workingDirectory: tempDir,
                     files: [ { fileName: 'testFileName.txt', fileSource: { url: 'file:///testNewFile.txt' } } ] },
@@ -290,9 +290,9 @@ describe( 'jobs agent unit tests', function() {
             fs.reset();
             fs.writeFileSync('/testFileName.txt', 'This is a test.');
             fs.writeFileSync('/testNewFile.txt', 'This is an updated test.');
-            fakeCallbackInProgress.reset();
-            fakeCallbackFailed.reset();
-            fakeCallbackSucceeded.reset();
+            fakeCallbackInProgress.resetHistory();
+            fakeCallbackFailed.resetHistory();
+            fakeCallbackSucceeded.resetHistory();
             var job = buildJobObject('install', { status: 'QUEUED' }, {
                     packageName: 'testPackageName', workingDirectory: tempDir,
                     files: [ { fileName: 'testFileName.txt', fileSource: { url: 'file:///testNewFile.txt' },
@@ -319,9 +319,9 @@ describe( 'jobs agent unit tests', function() {
             fs.reset();
             fs.writeFileSync('/testFileName.txt', 'This is a test.');
             fs.writeFileSync('/testNewFile.txt', 'This is an updated test.');
-            fakeCallbackInProgress.reset();
-            fakeCallbackFailed.reset();
-            fakeCallbackSucceeded.reset();
+            fakeCallbackInProgress.resetHistory();
+            fakeCallbackFailed.resetHistory();
+            fakeCallbackSucceeded.resetHistory();
             var job = buildJobObject('install', { status: 'QUEUED' }, {
                     packageName: 'testPackageName', workingDirectory: tempDir,
                     files: [ { fileName: 'testFileName.txt', fileSource: { url: 'file:///testNewFile.txt' },
@@ -348,9 +348,9 @@ describe( 'jobs agent unit tests', function() {
             fs.reset();
             fs.writeFileSync('/testFileName.txt', 'This is a test.');
             fs.writeFileSync('/testNewFile.txt', 'This is an updated test.');
-            fakeCallbackInProgress.reset();
-            fakeCallbackFailed.reset();
-            fakeCallbackSucceeded.reset();
+            fakeCallbackInProgress.resetHistory();
+            fakeCallbackFailed.resetHistory();
+            fakeCallbackSucceeded.resetHistory();
             var job = buildJobObject('install', { status: 'QUEUED' }, {
                     packageName: 'testPackageName', workingDirectory: tempDir,
                     files: [ { fileName: 'testFileName.txt', fileSource: { url: 'file:///testNewFile.txt' },
@@ -379,9 +379,9 @@ describe( 'jobs agent unit tests', function() {
             fs.writeFileSync('/testNewFile1.txt', 'This is an updated test 1.');
             fs.writeFileSync('/testFileName2.txt', 'This is a test 2.');
             fs.writeFileSync('/testNewFile2.txt', 'This is an updated test 2.');
-            fakeCallbackInProgress.reset();
-            fakeCallbackFailed.reset();
-            fakeCallbackSucceeded.reset();
+            fakeCallbackInProgress.resetHistory();
+            fakeCallbackFailed.resetHistory();
+            fakeCallbackSucceeded.resetHistory();
             var job = buildJobObject('install', { status: 'QUEUED' }, {
                     packageName: 'testPackageName', workingDirectory: tempDir,
                     files: [ { fileName: 'testFileName1.txt', fileSource: { url: 'file:///testNewFile1.txt' } },
@@ -412,9 +412,9 @@ describe( 'jobs agent unit tests', function() {
             fs.writeFileSync('/testNewFile1.txt', 'This is an updated test 1.');
             fs.writeFileSync('/testFileName2.txt', 'This is a test 2.');
             fs.writeFileSync('/testNewFile2.txt', 'This is an updated test 2.');
-            fakeCallbackInProgress.reset();
-            fakeCallbackFailed.reset();
-            fakeCallbackSucceeded.reset();
+            fakeCallbackInProgress.resetHistory();
+            fakeCallbackFailed.resetHistory();
+            fakeCallbackSucceeded.resetHistory();
             var job = buildJobObject('install', { status: 'QUEUED' }, {
                     packageName: 'testPackageName', workingDirectory: tempDir,
                     files: [ { fileName: 'testFileName1.txt', fileSource: { url: 'file:///testNewFile1.txt' } },
@@ -443,9 +443,9 @@ describe( 'jobs agent unit tests', function() {
             fs.reset();
             fs.writeFileSync('/program.js', 'previous program version');
             fs.writeFileSync('/badNewProgram.js', 'this is an invalid node program to install');
-            fakeCallbackInProgress.reset();
-            fakeCallbackFailed.reset();
-            fakeCallbackSucceeded.reset();
+            fakeCallbackInProgress.resetHistory();
+            fakeCallbackFailed.resetHistory();
+            fakeCallbackSucceeded.resetHistory();
             var job = buildJobObject('install', { status: 'QUEUED' }, {
                     packageName: 'testPackageName', workingDirectory: tempDir,
                     launchCommand: 'node -e "this is an invalid node program to install"', autoStart: true,
@@ -471,9 +471,9 @@ describe( 'jobs agent unit tests', function() {
             fs.reset();
             fs.writeFileSync('/program.js', 'previous program version');
             fs.writeFileSync('/newProgram.js', 'function done() {}; setTimeout(done, 3000);');
-            fakeCallbackInProgress.reset();
-            fakeCallbackFailed.reset();
-            fakeCallbackSucceeded.reset();
+            fakeCallbackInProgress.resetHistory();
+            fakeCallbackFailed.resetHistory();
+            fakeCallbackSucceeded.resetHistory();
             var job = buildJobObject('install', { status: 'QUEUED' }, {
                     packageName: 'testPackageName', workingDirectory: tempDir,
                     launchCommand: 'node -e "function done() {}; setTimeout(done, 3000);"', autoStart: true,
