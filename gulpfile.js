@@ -17,10 +17,9 @@
 
 var gulp = require('gulp'),
     jshint = require('gulp-jshint'),
-    concat = require('gulp-concat'),
     mocha = require('gulp-mocha'),
     cover = require('gulp-coverage'),
-    jscs = require('gulp-jscs'),
+    eslint = require('gulp-eslint'),
     beautify = require('gulp-beautify');
 
 gulp.task('default', ['test']);
@@ -51,7 +50,9 @@ gulp.task('jshint', function() {
     .pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish', {verbose: true}))
     .pipe(jshint.reporter('fail'))
-    .pipe(jscs());
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
 });
 
 gulp.task('beautify', function() {
